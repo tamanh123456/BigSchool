@@ -10,7 +10,7 @@ namespace BigSchool.Models
         public int ID { get; set; }
         public ApplicationUser Lecturer { get; set; }
         [Required]
-        public string LecturedId { get; set; }
+        public string LecturerId { get; set; }
         [Required]
         [StringLength(255)]
         public string Place { get; set; }
