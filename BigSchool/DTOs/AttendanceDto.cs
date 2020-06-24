@@ -4,15 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 #pragma warning restore IDE0005 // Using directive is unnecessary.
-using System.ComponentModel.DataAnnotations;
-namespace BigSchool.Models
-{
-    public class Category
-    {
-        public byte Id { get; set; }
-        [Required]
-        [StringLength(255)]
-        public string Name { get; set; }
 
+namespace BigSchool.DTOs
+{
+    public class AttendanceDto
+    {
+        public int CourseId { get; set; }
     }
 }

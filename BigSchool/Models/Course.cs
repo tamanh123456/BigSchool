@@ -1,7 +1,9 @@
 ﻿using System;
+#pragma warning disable IDE0005 // Using directive is unnecessary.
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+#pragma warning restore IDE0005 // Using directive is unnecessary.
 using System.ComponentModel.DataAnnotations;
 namespace BigSchool.Models
 {

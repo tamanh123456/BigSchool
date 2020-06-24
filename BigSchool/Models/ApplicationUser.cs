@@ -1,9 +1,16 @@
-﻿using System.Data.Entity;
+﻿#pragma warning disable IDE0005 // Using directive is unnecessary.
+using System.Data.Entity;
+#pragma warning restore IDE0005 // Using directive is unnecessary.
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.ComponentModel.DataAnnotations;
+#pragma warning disable IDE0005 // Using directive is unnecessary.
+using System.Collections;
+#pragma warning restore IDE0005 // Using directive is unnecessary.
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace BigSchool.Models
 {
@@ -21,6 +28,14 @@ namespace BigSchool.Models
             // Add custom user claims here
             return userIdentity;
         }
+        public ICollection<Following> Followers { get; set; }
+        public ICollection<Following> Followees { get; set; }
+        public ApplicationUser()
+        {
+            Followers = new Collection<Following>();
+            Followees = new Collection<Following>();
+        }
+
     }
 
    

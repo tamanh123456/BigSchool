@@ -4,9 +4,9 @@
         ViewBag.Title = "Home Page";
     }
 
-   <div>
+    <div>
         <ul class="course">
-            @foreach(var course in Model)
+            @foreach (var course in Model)
             {
                 <li>
                     <div class="date">
@@ -24,9 +24,28 @@
                         <span class="category">
                             @course.Category.Name
                         </span>
+                        <button data-course-id="@course.ID" class="btn btn-default btn-sm js-toggle-attendance"> Going?</button>
                     </div>
                 </li>
 
             }
         </ul>
+        <script>
+            $(document).ready(function () {
+                $(".js-toggle-attendance").click(function (e) {
+                    var button = $(e.target);
+                    $.post("/api/attendances", { courseId: button.attr("data-course-id") })
+                        .done(function () {
+                            button
+                                .removeClass("btn-default")
+                                .addClass("btn-info")
+                                .text("Going");
+                        })
+                        .fail(function () {
+                            alert("Something failed!");
+                        });
+                });
+            });
+            
+        </script >
     </div>
