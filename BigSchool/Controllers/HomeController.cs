@@ -9,6 +9,7 @@ using System.Web;
 #pragma warning restore IDE0005 // Using directive is unnecessary.
 using System.Web.Mvc;
 using System.Data.Entity;
+using BigSchool.ViewModel;
 
 namespace BigSchool.Controllers
 {
@@ -22,8 +23,15 @@ namespace BigSchool.Controllers
         public ActionResult Index()
         {
             var upComingCourses = _dbContext.Courses.Include(c => c.Lecturer).Include(c => c.Category).Where(c => c.DateTime > DateTime.Now);
-            return View(upComingCourses);
+            var viewModel = new CoursesViewModel
+            {
+                UpcommingCourses = upComingCourses,
+                ShowAction=User.Identity.IsAuthenticated
+            };
+            return View(viewModel);
+           
         }
+
 
         public ActionResult About()
         {

@@ -1,4 +1,6 @@
-﻿using System.Web;
+﻿#pragma warning disable IDE0005 // Using directive is unnecessary.
+using System.Web;
+#pragma warning restore IDE0005 // Using directive is unnecessary.
 using System.Web.Optimization;
 
 namespace BigSchool
@@ -21,7 +23,9 @@ namespace BigSchool
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/respond.js",
+                      "~/Scripts/bootbox.min.js"));
+
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
