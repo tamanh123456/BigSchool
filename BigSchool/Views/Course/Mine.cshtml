@@ -29,6 +29,7 @@
 
             <div class="action">
                 <a href="@Url.Action("Edit","Course", new { id = course.ID })">Edit</a> |
+                <a href="@Url.Action("Detail","Course", new { id = course.ID })">Detail</a> |
                 <a href="#" class="js-cancel-course" data-course-id="@course.ID" >Cancel</a>
             </div>
         </li>
@@ -38,24 +39,25 @@
 @section scripts{
     <script>
         $(document).ready(function () {
-            $('.js-cancel-course').click(function (e) {
+            $(".js-cancel-course").click(function (e) {
                 e.preventDefault();
                 var link = $(e.target);
-                bootbox.confirm("Are you sure to cancel?", function () {
-                    $.ajax({
-                        url: "/api/courses/" + link.attr("data-course-id"),
-                        method: "Cancel"
-                    })
+                bootbox.confirm("Are you sure to cancel?",
+                    function () {
+                        $.ajax({
+                            url: "/api/courses/" + link.attr("data-course-id"), method: "DELETE"
+                        })
                         .done(function () {
-                        link.parents("li").fadeOut(function () {
-                            $(this).remove();
-                        });
-                    })
+                            link.parents("li").fadeOut(function () {
+                                $(this).remove();
+                            });
+                        })
                         .fail(function () {
-                        alert("Something failed");
+                            alert("Something Fail!");
+                        });
                     });
-                });
             });
         });
-    </script>
+</script>
+
 }
